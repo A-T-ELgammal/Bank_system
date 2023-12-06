@@ -1,8 +1,12 @@
 #ifndef LIBRARY
 #define LIBRARY
 
+#include <iostream>
 #include <vector>
-#include "Book.hpp"
+
+using namespace std;
+
+class Library;
 
 struct Book
 {
@@ -13,6 +17,11 @@ public:
     // Methods
     void displayDetails()
     {
+        cout << "=========== " << name << "===========" << '\n'
+             << "Author: " << author << '\n'
+             << "Price: " << price << '\n'
+             << "Year of Publishing: " << yob << '\n'
+             << "Status: " << status;
     }
 
 private:
@@ -22,24 +31,24 @@ private:
     int yob;
     float price;
     string status;
+    friend class Library;
 };
 
 class Library
 {
 public:
     // Constructors
-    Library() {}
+    Library() : books{new vector<Book *>()}, emptyBook{new Book{"", "", 0, 0, ""}} {};
     ~Library();
 
     // Methods
     void addBook(const string name, const string author, const int yob, const float price, const string status);
-    void deleteBook();
-    Book getBook()
-    {
-    }
+    void deleteBook(const int id);
+    Book *getBook(const string name);
 
 private:
     vector<Book *> *books;
+    Book *emptyBook;
 };
 
 #endif
