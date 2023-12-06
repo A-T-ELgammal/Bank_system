@@ -18,13 +18,14 @@ Library::~Library()
 void Library::addBook(const string name, const string author, const int yob, const float price, const string status)
 {
     Book *newBook = new Book{name, author, yob, price, status};
+    newBook->id = rand() % 100; 
     books->push_back(newBook);
 }
 
-void Library::deleteBook(const int id)
+void Library::deleteBook(const string name)
 {
     for (int i = 0; i < books->size(); i++)
-        if ((*books)[i]->id == id)
+        if ((*books)[i]->name == name)
             books->erase(books->begin() + i);
 }
 

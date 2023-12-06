@@ -8,6 +8,9 @@ int main()
 
     lib.addBook(bookName, "Charles Dickens", 1838, 24.99, "Pre-owned");
     lib.getBook(bookName)->displayDetails();
+    lib.deleteBook(bookName);
+    cout << endl;
+    lib.getBook(bookName)->displayDetails();
 
     return 0;
 }

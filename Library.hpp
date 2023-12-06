@@ -17,6 +17,12 @@ public:
     // Methods
     void displayDetails()
     {
+        if (!id)
+        {
+            cout << "No books in Library now, Start adding some!";
+            return;
+        }
+
         cout << "=========== " << name << "===========" << '\n'
              << "Author: " << author << '\n'
              << "Price: " << price << '\n'
@@ -38,12 +44,12 @@ class Library
 {
 public:
     // Constructors
-    Library() : books{new vector<Book *>()}, emptyBook{new Book{"", "", 0, 0, ""}} {};
+    Library() : books{new vector<Book *>()}, emptyBook{new Book{"", "", 0, 0, ""}} {}
     ~Library();
 
     // Methods
     void addBook(const string name, const string author, const int yob, const float price, const string status);
-    void deleteBook(const int id);
+    void deleteBook(const string name);
     Book *getBook(const string name);
 
 private:
