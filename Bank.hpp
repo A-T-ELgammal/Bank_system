@@ -10,10 +10,11 @@ using namespace std;
 class Bank
 {
 public:
+    Bank() { accounts.push_back(*new Account()); }
     vector<Account> getAccounts() const;
-    Account getAccount(const int32_t ssn) const;
+    Account &getAccount(const uint32_t ssn);
     void openAccount(Account *account);
-    void closeAccount(const int accountNumber);
+    void closeAccount(const int32_t ssn);
 
 private:
     vector<Account> accounts;

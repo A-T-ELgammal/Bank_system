@@ -11,17 +11,23 @@ int main()
         1000};
 
     Bank *cib = new Bank();
+
     cib->openAccount(newAccount);
-    cout << newAccount->getAmount() << endl;
+    cout << "Balanace: " << newAccount->getAmount() << endl;
     newAccount->deposit(500);
     newAccount->deposit(200);
     newAccount->withdraw(300);
-    cout << newAccount->getAmount() << endl;
-    newAccount->printLog();
+    cout << "Balanace: " << newAccount->getAmount() << endl;
+    cib->closeAccount(newUser->getSSN());
+    cib->closeAccount(newUser->getSSN());
+    cout << "-------account info----------" << endl;
     newAccount->getInfo();
+    // cout << "----------History of closed account---------------" << endl;
+    newAccount->printLog();
+
     delete newUser;
     delete newAccount;
     delete cib;
-    cib->closeAccount(newAccount->getNUmber());
+    
     return 0;
 }

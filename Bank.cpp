@@ -10,8 +10,13 @@ void Bank::openAccount(Account *newAccount)
 
 void Bank::closeAccount(const int32_t ssn)
 {
+    Account &target = getAccount(ssn);
+
+    if (!target.getNumber())
+        return;
+
+    target.setHistory("closed account #" + to_string(target.getNumber()));
     cout << "account closed" << endl;
-    getAccount(ssn).setHistory("closed account");
 }
 
 vector<Account> Bank::getAccounts() const
@@ -19,13 +24,11 @@ vector<Account> Bank::getAccounts() const
     return accounts;
 }
 
-Account Bank::getAccount(const int32_t ssn) const
+Account &Bank::getAccount(const uint32_t ssn)
 {
-
-    for (Account account : accounts)
-    {
+    for (Account &account : accounts)
         if (account.getHolder().getSSN() == ssn)
             return account;
-    }
-    return Account ;
+
+    return accounts.front();
 }

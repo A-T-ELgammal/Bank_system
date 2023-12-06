@@ -9,8 +9,9 @@ using namespace std;
 class Account
 {
 public:
+    Account() : holder{new User()}, number{0}, accountType{'C'}, amount{0}, history(vector<string>(0)){};
     Account(User *holder, char accountType, int32_t amount);
-    uint32_t getNUmber() { return number; }
+    uint32_t getNumber() { return number; }
     void deposit(int amount);
     int getAmount();
     void withdraw(int amount);
@@ -25,7 +26,7 @@ public:
     User getHolder() { return *holder; }
 
 private:
-    uint32_t number;
+    int number;
     User *holder;
     char accountType;
     int32_t amount;

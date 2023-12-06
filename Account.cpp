@@ -1,7 +1,7 @@
 #include "Account.hpp"
 Account::Account(User *holder, char accountType, int32_t amount) : holder{holder}, accountType{accountType}, amount{amount}
 {
-    number = rand();
+    number = rand() % 100;
 }
 
 void Account::deposit(int amount)
@@ -14,7 +14,7 @@ void Account::deposit(int amount)
 
 int Account::getAmount()
 {
-    setHistory("get info");
+    setHistory("get balance info");
     return amount;
 }
 
